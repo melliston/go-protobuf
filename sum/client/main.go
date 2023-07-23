@@ -5,9 +5,11 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+
+	pb "github.com/melliston/go-protobuf/sum/proto"
 )
 
-var addr string = "localhost:50051"
+var addr string = "0.0.0.0:50051"
 
 func main() {
 	// Create a new connection with no SSL - For use when testing
@@ -18,4 +20,9 @@ func main() {
 	}
 
 	defer conn.Close()
+
+	c := pb.NewSumServiceClient(conn) // Should really have named the service something more generic than summing.
+	// doSum(c)
+	doPrimes(c)
+
 }

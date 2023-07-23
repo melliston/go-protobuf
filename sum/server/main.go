@@ -1,4 +1,4 @@
-package server
+package main
 
 import (
 	"log"
@@ -23,8 +23,9 @@ func main() {
 	log.Printf("listening on %s", addr)
 
 	s := grpc.NewServer()
-
+	pb.RegisterSumServiceServer(s, &Server{})
+	log.Println("service registered")
 	if err = s.Serve(lis); err != nil {
-		log.Fatalf("failed to serve %v\n", err)
+		log.Fatalf("failed to serve %v\n", err.Error())
 	}
 }
