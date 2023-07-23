@@ -8,11 +8,11 @@ import (
 	pb "github.com/melliston/go-protobuf/sum/proto"
 )
 
-func doPrimes(c pb.SumServiceClient) {
-	log.Printf("doPrimes() was invoked")
+func doPrimes(c pb.SumServiceClient, number int64) {
+	log.Printf("doPrimes() was invoked with %d\n", number)
 
 	req := &pb.PrimeRequest{
-		Number: 220,
+		Number: number,
 	}
 
 	stream, err := c.Primes(context.Background(), req)
