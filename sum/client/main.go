@@ -2,8 +2,6 @@ package main
 
 import (
 	"log"
-	"os"
-	"strconv"
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
@@ -28,14 +26,16 @@ func main() {
 	// doSum(c)
 
 	// Receive the cmd line args
-	if len(os.Args) < 2 {
-		log.Fatalf("usage: executable.file <number>\n")
-	}
-	arg := os.Args[1]
-	number, err := strconv.Atoi(arg)
-	if err != nil {
-		log.Fatalf("unable to convert to int64 %s\n", arg)
-	}
-	doPrimes(c, int64(number))
+	// if len(os.Args) < 2 {
+	// 	log.Fatalf("usage: executable.file <number>\n")
+	// }
+	// arg := os.Args[1]
+	// number, err := strconv.Atoi(arg)
+	// if err != nil {
+	// 	log.Fatalf("unable to convert to int64 %s\n", arg)
+	// }
+	// doPrimes(c, int64(number))
 
+	numbers := []int64{1, 5, 3, 22}
+	doAverage(c, numbers)
 }
